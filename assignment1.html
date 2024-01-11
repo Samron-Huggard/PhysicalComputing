@@ -17,9 +17,10 @@
             <img src="A1/metronome.gif" width=400></a>
             </p>
             <p>
-            For assignment 1, I made a metronome! It uses two blue LEDs to signify beats with five green LEDs between them. I used higher value resistors
-            in the 
-            
+            For assignment 1, I made a metronome! It uses two blue LEDs to signify beats and put five green LEDs between them. I used higher value resistors
+            for the green LEDs so they would have a lower current and be dimmer than the blue LEDs.
+
+            <h3>Code</h3>
             <pre>
                 <code>
                     void setup() {
@@ -57,6 +58,22 @@
                 </code>
             </pre>
             </p>
+
+            <h3>Schematic</h3>
+            <p></p>
+            <h3>Breadboard</h3>
+            <p></p>
+            <h3>Questions</h3>
+            <p>
+                1: Draw a graph where the X axis is time and the Y axis is voltage across the LEDs. Draw a line for each of your 3 LEDs.
+                  
+                2: How many LEDs could you blink independently with your Arduino? How much current would that draw?
+                    There are 14 I/O pins, so 14. If the current across each LED was 20mA, the total current going to ground would be 
+                    (20mA*14) 280mA.
+                3: How fast do you need to blink your LEDs until you no longer can tell that they are blinking?
+                    For me, around a 10 millisecond delay.
+            </p>
+
         </div>
         
     </body>
