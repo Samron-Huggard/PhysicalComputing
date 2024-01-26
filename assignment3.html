@@ -11,66 +11,66 @@
     <body> 
 
         <div class="header">
-            <h1>Sam's Assignment 2!</h1>
+            <h1>Sam's Assignment 3!</h1>
             <p>
-            <img src="A2/A2.gif" width=400></a>
+            <img src="A3/A3.gif" width=400></a>
             </p>
             <p>
-            For assignment 2, I made a fading lights! The LEDs fade dark to bright, one-by-one. If you click the button, they fade in the opposite direction.
-
+            For assignment 3, I controled a servo motor with a photoresistor! First, you calibrate the sensor by making it very dark then very light. The servo will move slowly in bright light and <br>
+            speed up as it gets darker. Imagined using this to keep and underwater sea gadget at an appropriate depth, since it would engage the motor as it sinks.
+            </p>
             <h3>Code</h3>
             <pre>
                 <code>
-//declare pin values for the LEDs and the button
-int green = 11;          
-int yellow = 10;        
-int red = 9;
-int button = 2;
+#include <Servo.h> // adding servo library
+Servo servo; // assigning name to servo
 
-int change = 1; // direction of change for loop index, either 1 or -1 
-int start = 0;  // pmv value for the start of loop, either 0 or 255
-int pin_start = 11; // pin vaule for start of loop, either 11 or 9
+const int analogInPin = A0;  // Analog input pin that the potentiometer is attached to
+const int analogOutPin = 9; // Analog output pin that the LED is attached to
+
+int sensorValue = 0;        // value read from the pot
+int outputValue = 0;        // value output to the PWM (analog out)
+int sensorMin = 1023;       // sets the sensor minimun to highest value before calibrating
+int sensorMax = 0;          // sets the sensor maximun to lowest value before calibrating
+int posChange = 0;          // defines the position change for each loop pass
 
 void setup() {
-  // set pins as either inputs and outputs
-  pinMode(button, INPUT);
-  pinMode(green, OUTPUT);
-  pinMode(yellow, OUTPUT);
-  pinMode(red, OUTPUT);
+  // put your setup code here, to run once:
+Serial.begin(9600);         // sets bps rate
+servo.attach(9);            // connect servo to pin 9
+servo.write(0);             // move servo to position 0
+
+
+  while(millis()< 5000){    // calibration loop, runs for 5 seconds
+    
+    if(analogRead(analogInPin) < sensorMin){  // opens when sensor reads below current minimum reading
+      sensorMin = analogRead(analogInPin);    // sets new minimun to current value
+    }
+
+    if(analogRead(analogInPin) > sensorMax){  // opens when sensor reads above current maximun reading
+      sensorMax = analogRead(analogInPin);    // set new maximun to current value
+    }
+  }
+
 }
 
 void loop() {
-    int i = pin_start; // sets index i to pin starting value
 
-    for (i; i > 8 && i < 12; i=i-change){ // this loop through the LED pins
-      
-      // turns off all LEDs at each LED change
-      digitalWrite(green, LOW);       // green LED off
-      digitalWrite(yellow, LOW);      // yellow LED off
-      digitalWrite(red, LOW);         // red LED off
-      
-      int j = start;      // resets j to start value, 0 or 255, depending on the direction
-      
-      for (j; j < 256 && j > -1 ; j=j+change){  // loops through all pmv values of the indexed LED
-        analogWrite(i, j); // the indexed led to the indexed pmv value
-        delay(5); // waits breifly to set the pace of the fade
+  for(int i = 0; i < 181; i += posChange){ // loop moves servo from 0 to 180
+    sensorValue = constrain(analogRead(analogInPin), sensorMin, sensorMax); // reads the photoresistor, constrained to calibrated min/max
+    posChange = constrain(map(sensorValue, sensorMin, sensorMax, 25, 1), 1, 25); // sets the index change based on sensor value, constrained 1-25
+    servo.write(i); // moves motor position to index value
+    delay(15); // short pause
+  }
 
-        if (digitalRead(button) == HIGH){ // checks to see if button has been pressed
-          change=-change;       // changes the direction of increment for both loops
-          if (start == 0){      // opens if currently fading to bright
-            start = 255;        // fade loop now starts LEDs bright
-            pin_start = 9;      // pin loop now starts on red
-          }
-          else {              // opens if currently fading to dark   
-            start = 0;        // fade loop now starts LEDs dark
-            pin_start = 11;   // pin loop now starts on green
-          }
-          while (digitalRead(button) == HIGH){ // closes when button is released so button can be clicked instead of held
-            delay(10); // waits briefly
-          }
-        }
-        }
-      }
+  for(int i = 180; i > -1; i -= posChange){ // loop moves servo 180 to 0
+    sensorValue = constrain(analogRead(analogInPin), sensorMin, sensorMax); // reads the photoresistor, constrained to calibrated min/max
+    posChange = constrain(map(sensorValue, sensorMin, sensorMax, 25, 1),1,25); // sets the index change based on sensor value, constrained 1-25
+    servo.write(i); // moves motor position to index value
+    delay(15); //short pause
+  }
+
+  
 }
                 </code>
             </pre>
@@ -78,11 +78,11 @@ void loop() {
 
             <h3>Schematic</h3>
             <p>
-            <img src="A2/A2_schematic.jpg" width=800></a> <br>
+            <img src="A3/A3_schematic.jpg" width=800></a> <br>
             </p>
             <h3>Breadboard</h3>
             <p>
-            <img src="A2/A2_breadboard.jpg" width=800></a>
+            <img src="A3/A3_circuit.jpg" width=800></a>
             </p>
             <h3>Questions</h3>
             <p>
