@@ -87,13 +87,16 @@ void loop() {
             <h3>Questions</h3>
             <p>
                 
-                1: Draw a chart where the X axis is time and the Y axis is voltage. Draw 3 lines representing the voltage across an LED with analogWrite(led, 64), analogWrite(led, 128), and analogWrite(led,255). <br>
-                
+                1: In your voltage divider, can the variable resistor be either R1 or R2 or does it need to be one or the other? Justify your answer with example calculations. <br>
+                    I can be either, but the votage change will be the opposite direction for each. Increasing R1 lowers the voltage, increaing R2 raises the voltage. For example, <br>
+                if R1 is 10K ohms and R2 is a variable resistor at 0 ohms, the voltage at the pin will be 0. If R2 is raised to 10k ohms the voltage at the pin will be raised to 2.5V. <br>
             <br>
-                2: Given your schematic, circuit, and firmware, assuming the only thing that draws current is your LEDs, how long would your circuit run if powered by a 1200 mAh battery? <br>
-                    Since only one LED runs at a time the current would be 3.2V/220ohms= 14.5mA. Because of the consistent fade an LED would only be on half the time, avergaing to 7.25 mA.
-                    1200mAh/7.25mA = 165.5 hours.
-
+                2: Draw a graph where the x-axis is time and the y-axis is voltage. Plot the voltage at V-measure of your voltage divider of your shared gif. <br>
+                 <img src="A3/A3_graph.jpg" width=800></a> <br>
+                <br>
+                3: AnalogWrite and analogRead are respectively 8-bit and 10-bit values. Imagine you had 10-bit PWM and a 16-bit analog-to-digital converter instead. How would this <br>
+                change your map() code? Explain your answer. <br>
+                10-bit has 1024 (2^10) values and 16-bit has 65536 (2^16) values. The function would therfore look like: map(PMWvalue, 0, 1023, 0, 65535). This would 10-bit to 16-bit linearly. <br>
             </p>
 
         </div>
