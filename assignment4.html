@@ -70,24 +70,23 @@ sevseg.refreshDisplay(); // refresh display
 
             <h3>Schematic</h3>
             <p>
-            <img src="A3/A3_schematic.jpg" width=800></a> <br>
               </p>
 
             <h3>Breadboard</h3>
             <p>
-            <img src="A3/A3_circuit.jpg" width=800></a>
             </p>
             <h3>Questions</h3>
             <p>
                 
 
             <br>
-                2: Draw a graph where the x-axis is time and the y-axis is voltage. Plot the voltage at V-measure of your voltage divider of your shared gif. <br>
-                 <img src="A3/A3_graph.jpg" width=800></a> <br>
+                2: Your input device is slightly broken, leading it to give us an erroneous reading 1% of the time. How can we address this? Answer in (pseudo)code. <br>
+                
+                if (last_reading - current_reading (is less than) some_reasonable_difference){ do code things } <br>
+                else {}   
                 <br>
-                3: AnalogWrite and analogRead are respectively 8-bit and 10-bit values. Imagine you had 10-bit PWM and a 16-bit analog-to-digital converter instead. How would this <br>
-                change your map() code? Explain your answer. <br>
-                10-bit has 1024 (2^10) values and 16-bit has 65536 (2^16) values. The function would therfore look like: map(PMWvalue, 0, 1023, 0, 65535). This would 10-bit to 16-bit linearly. <br>
+                3: Your input device is slightly noisy, leading the measurement to randomly deviate from the true measurement up or down by 10%. How can we address this? Answer in (pseudo)code. <br>
+                    avg_reading = (reading1 + reading2 + reading3) / 3 
             </p>
 
         </div>
