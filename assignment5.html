@@ -83,10 +83,7 @@ void loop() {
 
             <h3>Schematic</h3>
             <p>
-            <img src="A3/A3_schematic.jpg" width=800></a> <br>
-              </p>
-              <p>
-             <img src="A3/A3_calculations.jpg" width=800></a> <br>     
+            <img src="A5/schematic.jpg" width=800></a> <br>
               </p>
             <h3>Breadboard</h3>
             <p>
@@ -96,14 +93,18 @@ void loop() {
             <p>
                 
                 1: What is the absolute maximum amount of current between pins 2 and 3?. <br>
-                    <br>
+                    The link provided didn't work, but I used the datasheet from the slides. The max current at 25 degrees C would be 32 Amps.<br>
             <br>
                 2: Draw a schematic for a circuit with using at least your arduino, a DC motor, a flyback diode, and capacitors between power and ground. Find parts with datasheets you could use for each of these schematic components <br>
                  <img src="A5/Q2.jpg" width=800></a> <br>
-                <br>
-                3: Draw a schematic using at least your arduino, this chip, and two motors. Write (pseudo) code that shows how you would move the motors both forward, both back, then one forward one back, and one back then forward. <br>
+                <a href="https://www.digikey.com/en/products/detail/nte-electronics,-inc/90120/11650035?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=PMax_DK%2BSupplier_Focus%20Suppliers&utm_term=&utm_content=&utm_id=go_cmp-19976712210_adg-_ad-__dev-c_ext-_prd-11650035_sig-CjwKCAiArLyuBhA7EiwA-qo80F1rqPkVaTzJSSLDC5MiOCttoa_dUBdapEi7QxSbsLZcd6YFnsUCahoCjcEQAvD_BwE&gad_source=1&gclid=CjwKCAiArLyuBhA7EiwA-qo80F1rqPkVaTzJSSLDC5MiOCttoa_dUBdapEi7QxSbsLZcd6YFnsUCahoCjcEQAvD_BwE">Capacitor</a> <br>
+                <a href="https://www.digikey.com/en/products/detail/diodes-incorporated/1N4001-T/45351?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=PMax%20Shopping_Product_Medium%20ROAS%20Categories&utm_term=&utm_content=&utm_id=go_cmp-20223376311_adg-_ad-__dev-c_ext-_prd-45351_sig-CjwKCAiArLyuBhA7EiwA-qo80A8wePXRWjgDu0Ho35scokdnMHPnpVqAhx2N3X6FgFhP09MuDhueChoCnREQAvD_BwE&gad_source=1&gclid=CjwKCAiArLyuBhA7EiwA-qo80A8wePXRWjgDu0Ho35scokdnMHPnpVqAhx2N3X6FgFhP09MuDhueChoCnREQAvD_BwE">Diode</a> <br>
+            3: Draw a schematic using at least your arduino, this chip, and two motors. Write (pseudo) code that shows how you would move the motors both forward, both back, then one forward one back, and one back then forward. <br>
                  <img src="A5/Q3.jpg" width=800></a><br>
-                 <br>
+            
+                 for both motors forward: pins 5 and 10 HIGH, 6 and 11 LOW. <br>
+                for both backward: 5 and 10 LOW, 6 and 11 HIGH. <br>
+                for one forward one backward: 5 and 11 HIGH, 6 and 10 LOW.
             </p>
 
         </div>
